@@ -1,16 +1,16 @@
 import React from "react";
 import style from 'styled-components';
 import { Button } from '@chakra-ui/react';
-import { TitleH1, H1, H4 } from "./Components/Text/Text.component";
+import { TitleH1, H1, H4 } from "../Components/Text/Text.component";
 
 export const Body = style.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #2A2A2A;
-  position: fixed;
+  background-color: #1B2845;
+  position: absolute;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   gap: 30px;
 `
 
@@ -22,8 +22,12 @@ export const Title = style(TitleH1)`
   order: 0;
   flex-grow: 1;
   width: 400px;
-  height: 98px;
+  max-height: 98px;
   margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 50px;
 `
 
 export const Desc = style(H1)`
