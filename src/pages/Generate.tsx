@@ -1,62 +1,81 @@
-import React from 'react';
-import { Body, Title, Separator, Icon, MyInput } from './Generate.style';
-import { Button, InputGroup, Stack, InputLeftElement } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Body, Title, Separator, ResultContainer } from './Generate.style';
+import Input from '../Components/Input/Input.component';
+import { Button } from '@chakra-ui/react';
 
 function Generate() {
-  const arrInput = [
-    {
-      iconValue: '✏️',
-      placeholder: 'Name of product',
-    },
-    {
-      iconValue: '🌈',
-      placeholder: 'Color of product',
-    },
-    {
-      iconValue: '♻️',
-      placeholder: 'State of product',
-    },
-    {
-      iconValue: '💵',
-      placeholder: 'Price of product',
-    },
-    {
-      iconValue: '📏',
-      placeholder: 'Size of product',
-    },
-    {
-      iconValue: '🚻',
-      placeholder: 'Sexe of product',
-    },
-    {
-      iconValue: '™️',
-      placeholder: 'Brand of product',
-    },
-    {
-      iconValue: '🌎',
-      placeholder: 'Origin of product',
-    },
-  ];
+  const [name, setName] = useState('');
+  const [color, setColor] = useState('');
+  const [state, setState] = useState('');
+  const [price, setPrice] = useState('');
+  const [size, setSize] = useState('');
+  const [sexe, setSexe] = useState('');
+  const [brand, setBrand] = useState('');
+  const [origin, setOrigin] = useState('');
+
+  const handleName = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value)
+  };
+
+  const handleColor = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setColor(event.target.value)
+  };
+
+  const handleState = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setState(event.target.value)
+  };
+
+  const handlePrice = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPrice(event.target.value)
+  };
+
+  const handleSize = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSize(event.target.value)
+  };
+
+  const handleSexe = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSexe(event.target.value)
+  };
+
+  const handleBrand = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setBrand(event.target.value)
+  };
+
+  const handleOrigin = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setOrigin(event.target.value)
+  };
+
+  const [resultVisibility, setResultVisibility] = useState(false);
+
+  const clickResult = () => {
+    setResultVisibility(true);
+  }
+
+  console.log(resultVisibility);
   return (
     <Body>
-        <Title><span style={{color: '#40B175'}}>Make</span>
+        <Title visible={true}><span style={{color: '#40B175'}}>Make</span>
         <span> your</span><span>description</span></Title>
-        {arrInput.map((item) => (
-          <Stack spacing={4}>
-            <InputGroup style={{minWidth: '350px'}}>
-              <InputLeftElement
-                color="white"
-                pointerEvents='none'
-                children={<Icon>{item.iconValue}</Icon>}
-            />
-              <MyInput color="white" borderColor='#515B6E' focusBorderColor='#2C8857' placeholder={item.placeholder} />
-            </InputGroup>
-          </Stack>
-        ))}
+        <Input icon='✏️' placeholder='Name of product' onChange={handleName} />
+        <Input icon='🌈' placeholder='Color of product' onChange={handleColor} />
+        <Input icon='♻️' placeholder='State of product' onChange={handleState} />
+        <Input icon='💵' placeholder='Price of product' onChange={handlePrice} />
+        <Input icon='📏' placeholder='Size of product' onChange={handleSize} />
+        <Input icon='🚻' placeholder='Sexe of product' onChange={handleSexe} />
+        <Input icon='™️' placeholder='Brand of product' onChange={handleBrand} />
+        <Input icon='🌎' placeholder='Origin of product' onChange={handleOrigin} />
         <Separator src='/separator.svg' />
-        <Button variant="solid" size="lg">
-          Generate your description
-        </Button>
+        <ResultContainer>
+          <span style={{ fontStyle: 'italic', marginBottom: '20px' }}>Your custom description: </span>
+          {name !== '' ? <span>✏️ {name}</span> : null}
+          {color !== '' ? <span>🌈 {color}</span> : null}
+          {state !== '' ? <span>♻️ {state}</span> : null}
+          {price !== '' ? <span>💵 {price}</span> : null}
+          {size !== '' ? <span>📏 {size}</span> : null}
+          {sexe !== '' ? <span>🚻 {sexe}</span> : null}
+          {brand !== '' ? <span>™️ {brand}</span> : null}
+          {origin !== '' ? <span>🌎 {origin}</span> : null}
+        </ResultContainer>
     </Body>
   )
 }

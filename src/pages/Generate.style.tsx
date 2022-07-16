@@ -1,5 +1,4 @@
 import style from 'styled-components';
-import { Input } from '@chakra-ui/react';
 import { TitleH1 } from '../Components/Text/Text.component';
 
 export const Body = style.div`
@@ -16,17 +15,11 @@ export const Body = style.div`
 export const Separator = style.img`
 `
 
-export const Icon = style.p`
-`
-
 export const Form = style.div`
 `
 
-export const MyInput = style(Input)`
-  min-width: 400px;
-`
 
-export const Title = style(TitleH1)`
+export const Title = style(TitleH1)<{ visible: boolean }>`
   display: flex;
   align-items: center;
   text-align: center;
@@ -40,4 +33,20 @@ export const Title = style(TitleH1)`
   justify-content: center;
   gap: 10px;
   margin-bottom: 50px;
+  ${({ visible }) => (visible ? '' : 'visibility: hidden;')};
+`
+
+export const ResultContainer = style.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: center;
+  flex: none;
+  order: 0;
+  min-width: 300px;
+  min-height: fit-content;
+  background: rgba(196, 196, 196, 0.3);
+  border-radius: 3px;
+  font-size: 20px;
+  padding: 15px;
 `
